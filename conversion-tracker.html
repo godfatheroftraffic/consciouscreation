@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AmplifAI — Conversion Tracker</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0a0a0f; color: #e0e0e0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 20px; }
+  .card { background: #13131a; border-radius: 16px; padding: 40px; border: 1px solid #1e1e2a; max-width: 480px; text-align: center; }
+  .loader { width: 40px; height: 40px; border: 3px solid #1e1e2a; border-top-color: #22c55e; border-radius: 50%; animation: spin .8s linear infinite; margin: 0 auto 24px; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  h1 { font-size: 20px; color: #fff; margin-bottom: 12px; }
+  p { color: #888; font-size: 14px; line-height: 1.6; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="loader"></div>
+  <h1>Processing your qualification...</h1>
+  <p>Redirecting you to your personalized experience.</p>
+</div>
+<script>
+var params = {};
+var pairs = window.location.search.substring(1).split('&');
+for (var i = 0; i < pairs.length; i++) {
+  var pair = pairs[i].split('=');
+  if (pair[0]) params[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1] || '');
+}
+for (var k in params) {
+  document.cookie = k + '=' + encodeURIComponent(params[k]) + '; path=/; max-age=31536000; SameSite=Lax';
+}
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({
+  event: 'lead_conversion',
+  source: 'ceos_typebot',
+  email: params.email || params.prospect_email || '',
+  phone: params.phone || params.prospect_phone || '',
+  name: params.first_name || params.fname || '',
+  brand: params.brand_name || params.brand_q1 || '',
+  conversion: params.conversion || '',
+  campaign: params.campaign || '',
+  qualifier_path: params.qualifier_path || '',
+  annual_recovery: params.annual_recovery || '',
+  spend_range: params.manual_spend_range || ''
+});
+var dest = 'https://cal.com/amplifai/amplifai-apply';
+setTimeout(function() { window.location.href = dest; }, 1500);
+</script>
+</body>
+</html>
