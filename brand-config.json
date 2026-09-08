@@ -78,19 +78,19 @@
       "_comment": "Default content shown when no URL params override. URL params ALWAYS win over these values.",
       "_priority": "Priority order: URL param > brand-config default > hardcoded fallback",
       "_tip": "Use URL params to A/B test headlines, images, and CTAs without touching this file.",
-      "headline": "Your Ads Are Not the Problem. Your Dumb Funnel Is.",
+      "headline": "Awaken to what is already yours.",
       "_headline_help": "⚡ REQUIRED — Main H1 headline. 40-60 characters optimal for impact. Overridden by ?hl= URL param.",
-      "subheadline": "If your funnel isn't AI-powered, it's leaking money.",
+      "subheadline": "A short daily practice — meeting each day with presence rather than force.",
       "_subheadline_help": "⚡ REQUIRED — Supporting text below headline. 60-120 characters optimal. Overridden by ?sh= URL param.",
-      "cta_text": "Build My AI Funnel",
+      "cta_text": "Begin the practice",
       "_cta_text_help": "⚡ REQUIRED — CTA button label. Action-oriented, 3-6 words ideal. Overridden by ?cta= URL param.",
       "cta_destination": "https://experience.consciouscreation.com/conversion-tracker.html",
       "_cta_destination_help": "⚡ REQUIRED — Where the CTA button sends the user. TypeBot URL, Calendly link, product page, etc.",
       "_cta_destination_example": "Examples: https://typebot.co/your-bot-name  |  https://cal.com/yourname/meeting  |  https://yourproduct.com",
       "_cta_destination_routing": "Routing priority: 1) ?link= URL param always wins  2) debug=1 → conversion-tracker.html (internal tracking test)  3) This field  4) Falls back to conversion-tracker.html with console warning",
-      "background_image": "16_ybn.jpg",
+      "background_image": "0_ccre.jpg",
       "_background_image_help": "⚡ REQUIRED — Desktop hero background image filename in /public/ folder. Overridden by ?img= URL param.",
-      "background_image_mobile": "16_ybn_mobile.jpg",
+      "background_image_mobile": "0_ccre_mobile.jpg",
       "_background_image_mobile_help": "Mobile hero image for screens ≤768px. Convention: FILENAME_mobile.jpg. Leave empty to use desktop image on mobile.",
       "overlay": "dark",
       "_overlay_help": "Background overlay darkness to ensure text readability. Options: light | medium | dark | xdark. Overridden by ?overlay= URL param."
@@ -105,7 +105,7 @@
       "_subheadline_size_help": "Subheadline font size. Default 1.25rem. Examples: 1rem, 1.1rem, 1.25rem, 1.5rem.",
       "subheadline_color": "rgba(255,255,255,0.85)",
       "_subheadline_color_help": "Subheadline text color. Accepts hex or rgba. Overridden by ?sh_color= URL param.",
-      "button_color": "#4F46E5",
+      "button_color": "#1F1647",
       "_button_color_help": "⚡ REQUIRED — CTA button background color (hex). Overridden by ?btn_color= URL param.",
       "button_text_color": "#ffffff",
       "_button_text_color_help": "CTA button label text color (hex). Use #ffffff or #000000.",
@@ -181,19 +181,23 @@
     },
     "social_links": {
       "_comment": "Social icons appear only if enabled = true AND url is not empty.",
-      "facebook":  { "enabled": true, "url": "https://facebook.com" },
-      "instagram": { "enabled": true, "url": "https://instagram.com" },
-      "twitter":   { "enabled": true, "url": "https://x.com" },
-      "linkedin":  { "enabled": true, "url": "https://www.linkedin.com" },
-      "youtube":   { "enabled": true, "url": "https://www.youtube.com/" },
-      "tiktok":    { "enabled": true, "url": "https://tiktok.com" }
+      "facebook":  { "enabled": false, "url": "https://facebook.com" },
+      "instagram": { "enabled": false, "url": "https://instagram.com" },
+      "twitter":   { "enabled": false, "url": "https://x.com" },
+      "linkedin":  { "enabled": false, "url": "https://www.linkedin.com" },
+      "youtube":   { "enabled": false, "url": "https://www.youtube.com/" },
+      "tiktok":    { "enabled": false, "url": "https://tiktok.com" }
     },
     "links": {
       "_comment": "⚡ REQUIRED — Footer legal links. Fill in your actual URLs.",
-      "privacy":  { "enabled": true,  "text": "Privacy Policy",   "url": "/privacy" },
-      "terms":    { "enabled": true,  "text": "Terms of Service", "url": "/terms" },
-      "cookies":  { "enabled": true,  "text": "Cookie Policy",    "url": "/cookies" },
-      "contact":  { "enabled": true,  "text": "Contact",          "url": "/contact" }
+      "privacy":  { "enabled": true,  "text": "Privacy Policy",   "url": "https://www.consciouscreation.art/privacy/" },
+      "terms":    { "enabled": true,  "text": "Terms of Service", "url": "https://www.consciouscreation.art/terms/" },
+      "cookies":  { "enabled": true,  "text": "About",    "url": "https://www.consciouscreation.art/about.html" },
+      "contact":  { "enabled": true,  "text": "Contact",          "url": "https://www.consciouscreation.art/contact.html" }
+      "books":  { "enabled": true,  "text": "Books",     "url": "https://www.consciouscreation.art/books.html" }
+      "APP":  { "enabled": true,  "text": "APP",     "url": "https://www.consciouscreation.art/app.html" }
+      "coaching":  { "enabled": true,  "text": "Coaching",     "url": "https://www.consciouscreation.art/coaching.html" }
+      "writing":  { "enabled": true,  "text": "Writings",     "url": "https://www.consciouscreation.art/writings.html" }
     }
   },
 
@@ -283,8 +287,8 @@
     "conversion_types": {
       "_comment": "Content variants for different conversion scenarios.",
       "booking": {
-        "headline": "You're Booked! 🎉",
-        "subheadline": "Check your email for confirmation details",
+        "headline": "Your session is confirmed! 🎉",
+        "subheadline": "The details are on their way to your inbox.",
         "show_calendly": false,
         "calendly_url": ""
       },
