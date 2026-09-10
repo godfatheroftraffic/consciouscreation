@@ -54,7 +54,7 @@
       "_family_help": "CSS font family name. Must exactly match the font loaded from the URL below.",
       "url": "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap",
       "_url_help": "Full Google Fonts embed URL. Set to empty string \"\" to skip loading and use system font.",
-      "fallback": "fallback": "Georgia, 'Times New Roman', serif", 
+      "fallback": "Georgia, 'Times New Roman', serif", 
       "_fallback_help": "CSS fallback stack used if Google Font fails to load. Safe to leave as-is."
     },
     "logo": {
@@ -193,10 +193,10 @@
       "privacy":  { "enabled": true,  "text": "Privacy Policy",   "url": "https://www.consciouscreation.art/privacy/" },
       "terms":    { "enabled": true,  "text": "Terms of Service", "url": "https://www.consciouscreation.art/terms/" },
       "cookies":  { "enabled": true,  "text": "About",    "url": "https://www.consciouscreation.art/about.html" },
-      "contact":  { "enabled": true,  "text": "Contact",          "url": "https://www.consciouscreation.art/contact.html" }
-      "books":  { "enabled": true,  "text": "Books",     "url": "https://www.consciouscreation.art/books.html" }
-      "APP":  { "enabled": true,  "text": "APP",     "url": "https://www.consciouscreation.art/app.html" }
-      "coaching":  { "enabled": true,  "text": "Coaching",     "url": "https://www.consciouscreation.art/coaching.html" }
+      "contact":  { "enabled": true,  "text": "Contact",          "url": "https://www.consciouscreation.art/contact.html" },
+      "books":  { "enabled": true,  "text": "Books",     "url": "https://www.consciouscreation.art/books.html" },
+      "APP":  { "enabled": true,  "text": "APP",     "url": "https://www.consciouscreation.art/app.html" },
+      "coaching":  { "enabled": true,  "text": "Coaching",     "url": "https://www.consciouscreation.art/coaching.html" },
       "writing":  { "enabled": true,  "text": "Writings",     "url": "https://www.consciouscreation.art/writings.html" }
     }
   },
