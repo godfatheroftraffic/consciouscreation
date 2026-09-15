@@ -15,7 +15,6 @@
   "_SETUP_CHECKLIST_14": "║  👉 Everything else has a working default — change only if needed.║",
   "_SETUP_CHECKLIST_15": "║  👉 NEVER change property names. Edit VALUES only.               ║",
   "_SETUP_CHECKLIST_16": "╚══════════════════════════════════════════════════════════════════╝",
-
   "_comment": "╔══════════════════════════════════════════════════════════════╗",
   "_comment2": "║  AMPLIFAI ECHO LP — BRAND CONFIGURATION v4.4                ║",
   "_comment3": "║  Edit VALUES only. DO NOT change property names.            ║",
@@ -23,7 +22,6 @@
   "_comment5": "╚══════════════════════════════════════════════════════════════╝",
   "_version": "4.4",
   "_updated": "2026-03-23",
-
   "brand": {
     "_comment": "🏷️  ========== STEP 1: BRAND IDENTIFIERS ==========",
     "_help": "Core brand identity. Used across the entire funnel. Start here.",
@@ -45,7 +43,6 @@
     "copyright": "© 2026 Conscious Creation. All rights reserved.",
     "_copyright_help": "Footer copyright line. Update year and brand name annually."
   },
-
   "branding": {
     "_comment": "🎨  ========== STEP 2: FONTS & LOGO ==========",
     "font": {
@@ -54,7 +51,7 @@
       "_family_help": "CSS font family name. Must exactly match the font loaded from the URL below.",
       "url": "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap",
       "_url_help": "Full Google Fonts embed URL. Set to empty string \"\" to skip loading and use system font.",
-      "fallback": "Georgia, 'Times New Roman', serif", 
+      "fallback": "Georgia, 'Times New Roman', serif",
       "_fallback_help": "CSS fallback stack used if Google Font fails to load. Safe to leave as-is."
     },
     "logo": {
@@ -71,7 +68,6 @@
       "_link_help": "URL the logo links to. Opens in new tab."
     }
   },
-
   "landing_page": {
     "_comment": "📄  ========== STEP 3: LANDING PAGE CONTENT & FEATURES ==========",
     "defaults": {
@@ -128,11 +124,36 @@
         "enabled": false,
         "_enabled_help": "true = show popup | false = hide. Overridden by ?social_proof=on URL param.",
         "variants": [
-          { "emoji": "👩‍💼", "name": "Sarah M.", "text": "Advertiser in eCom just activated an AI funnel", "time": "2 minutes ago" },
-          { "emoji": "👨‍💻", "name": "James K.", "text": "Media buyer just cut CPL by 40% with AmplifAI", "time": "5 minutes ago" },
-          { "emoji": "🧑‍🚀", "name": "David T.", "text": "Agency owner just booked an AI funnel build session", "time": "8 minutes ago" },
-          { "emoji": "👩‍🎓", "name": "Maria R.", "text": "Performance marketer just went live with first AI campaign", "time": "12 minutes ago" },
-          { "emoji": "🧑‍💼", "name": "Alex W.", "text": "Brand just activated autonomous ad optimization", "time": "3 minutes ago" }
+          {
+            "emoji": "👩‍💼",
+            "name": "Sarah M.",
+            "text": "Advertiser in eCom just activated an AI funnel",
+            "time": "2 minutes ago"
+          },
+          {
+            "emoji": "👨‍💻",
+            "name": "James K.",
+            "text": "Media buyer just cut CPL by 40% with AmplifAI",
+            "time": "5 minutes ago"
+          },
+          {
+            "emoji": "🧑‍🚀",
+            "name": "David T.",
+            "text": "Agency owner just booked an AI funnel build session",
+            "time": "8 minutes ago"
+          },
+          {
+            "emoji": "👩‍🎓",
+            "name": "Maria R.",
+            "text": "Performance marketer just went live with first AI campaign",
+            "time": "12 minutes ago"
+          },
+          {
+            "emoji": "🧑‍💼",
+            "name": "Alex W.",
+            "text": "Brand just activated autonomous ad optimization",
+            "time": "3 minutes ago"
+          }
         ],
         "_variants_help": "Popup messages. System picks one randomly each cycle. Customize names/text to match your brand voice.",
         "default_text": "",
@@ -170,7 +191,6 @@
       }
     }
   },
-
   "footer": {
     "_comment": "🔗  ========== STEP 4: FOOTER ==========",
     "enabled": true,
@@ -181,26 +201,75 @@
     },
     "social_links": {
       "_comment": "Social icons appear only if enabled = true AND url is not empty.",
-      "facebook":  { "enabled": false, "url": "https://facebook.com" },
-      "instagram": { "enabled": false, "url": "https://instagram.com" },
-      "twitter":   { "enabled": false, "url": "https://x.com" },
-      "linkedin":  { "enabled": false, "url": "https://www.linkedin.com" },
-      "youtube":   { "enabled": false, "url": "https://www.youtube.com/" },
-      "tiktok":    { "enabled": false, "url": "https://tiktok.com" }
+      "facebook": {
+        "enabled": false,
+        "url": "https://facebook.com"
+      },
+      "instagram": {
+        "enabled": false,
+        "url": "https://instagram.com"
+      },
+      "twitter": {
+        "enabled": false,
+        "url": "https://x.com"
+      },
+      "linkedin": {
+        "enabled": false,
+        "url": "https://www.linkedin.com"
+      },
+      "youtube": {
+        "enabled": false,
+        "url": "https://www.youtube.com/"
+      },
+      "tiktok": {
+        "enabled": false,
+        "url": "https://tiktok.com"
+      }
     },
     "links": {
       "_comment": "⚡ REQUIRED — Footer legal links. Fill in your actual URLs.",
-      "privacy":  { "enabled": true,  "text": "Privacy Policy",   "url": "https://www.consciouscreation.art/privacy/" },
-      "terms":    { "enabled": true,  "text": "Terms of Service", "url": "https://www.consciouscreation.art/terms/" },
-      "cookies":  { "enabled": true,  "text": "About",    "url": "https://www.consciouscreation.art/about.html" },
-      "contact":  { "enabled": true,  "text": "Contact",          "url": "https://www.consciouscreation.art/contact.html" },
-      "books":  { "enabled": true,  "text": "Books",     "url": "https://www.consciouscreation.art/books.html" },
-      "APP":  { "enabled": true,  "text": "APP",     "url": "https://www.consciouscreation.art/app.html" },
-      "coaching":  { "enabled": true,  "text": "Coaching",     "url": "https://www.consciouscreation.art/coaching.html" },
-      "writing":  { "enabled": true,  "text": "Writings",     "url": "https://www.consciouscreation.art/writings.html" }
+      "privacy": {
+        "enabled": true,
+        "text": "Privacy Policy",
+        "url": "https://www.consciouscreation.art/privacy/"
+      },
+      "terms": {
+        "enabled": true,
+        "text": "Terms of Service",
+        "url": "https://www.consciouscreation.art/terms/"
+      },
+      "cookies": {
+        "enabled": true,
+        "text": "About",
+        "url": "https://www.consciouscreation.art/about.html"
+      },
+      "contact": {
+        "enabled": true,
+        "text": "Contact",
+        "url": "https://www.consciouscreation.art/contact.html"
+      },
+      "books": {
+        "enabled": true,
+        "text": "Books",
+        "url": "https://www.consciouscreation.art/books.html"
+      },
+      "APP": {
+        "enabled": true,
+        "text": "APP",
+        "url": "https://www.consciouscreation.art/app.html"
+      },
+      "coaching": {
+        "enabled": true,
+        "text": "Coaching",
+        "url": "https://www.consciouscreation.art/coaching.html"
+      },
+      "writing": {
+        "enabled": true,
+        "text": "Writings",
+        "url": "https://www.consciouscreation.art/writings.html"
+      }
     }
   },
-
   "conversion_values": {
     "_comment": "💰  ========== STEP 5: ADKERNEL CONVERSION VALUES ==========",
     "_instructions": "Dollar values passed to AdKernel at each funnel step. AdKernel uses these to optimize bids toward your highest-value actions. Set proportional to lead quality at each step.",
@@ -208,10 +277,9 @@
     "_step_1_help": "Value at LP click (echo_cta_click / step_1). Visitor showed intent. Default: $0.01.",
     "step_2": "0.05",
     "_step_2_help": "Value at lead capture / form submit (lead_conversion / step_2). Qualified lead. Default: $0.05.",
-    "step_3": 1.00,
+    "step_3": 1.0,
     "_step_3_help": "⚡ REQUIRED — Value at main conversion / thank-you page (thankyou_conversion / step_3). Set to your actual lead value. Example: 10.00"
   },
-
   "conversion_tracker": {
     "_comment": "⚙️  ========== STEP 6: CONVERSION TRACKER PAGE (Step 2) ==========",
     "_instructions": "The conversion-tracker.html page fires between LP click and thank-you. Captures lead data, fires postbacks, and can embed a survey.",
@@ -273,12 +341,20 @@
     },
     "webhooks": {
       "_comment": "n8n or automation endpoints triggered when APS thresholds are met. Leave url empty to disable.",
-      "ai_call": { "enabled": false, "url": "" },
-      "sms":     { "enabled": false, "url": "" },
-      "email":   { "enabled": false, "url": "" }
+      "ai_call": {
+        "enabled": false,
+        "url": ""
+      },
+      "sms": {
+        "enabled": false,
+        "url": ""
+      },
+      "email": {
+        "enabled": false,
+        "url": ""
+      }
     }
   },
-
   "thank_you_page": {
     "_comment": "🎉  ========== STEP 7: THANK YOU PAGE (Step 3) ==========",
     "_instructions": "Content shown after conversion.",
@@ -315,16 +391,30 @@
     "splitTest": {
       "enabled": false,
       "variants": [
-        { "name": "control", "url": "", "weight": 100, "enabled": true }
+        {
+          "name": "control",
+          "url": "",
+          "weight": 100,
+          "enabled": true
+        }
       ]
     },
     "redirect": {
       "enabled": false,
       "url": "",
       "delay_seconds": 3
+    },
+    "download": {
+      "_comment": "Phase-1 PDF download page. Drop cover + pdf into /public and set the filenames below.",
+      "eyebrow": "Your free copy is ready",
+      "headline": "The Way of Conscious Creation",
+      "subheadline": "A practical synthesis — yours to keep. Tap below to download the PDF.",
+      "button_text": "Download the PDF",
+      "cover": "book-cover.jpg",
+      "pdf": "the-way-of-conscious-creation.pdf",
+      "note": "No email required. It's yours."
     }
   },
-
   "tracking": {
     "_comment": "📊  ========== STEP 8: TRACKING & APS ENGINE ==========",
     "cookie_expiry_days": 365,
@@ -365,10 +455,18 @@
         "bonus_per_hover": 5,
         "max_bonus": 15
       },
-      "cta_click": { "bonus": 15 },
-      "micro_yes": { "bonus": 10 },
-      "email_entry": { "bonus": 15 },
-      "phone_entry": { "bonus": 25 },
+      "cta_click": {
+        "bonus": 15
+      },
+      "micro_yes": {
+        "bonus": 10
+      },
+      "email_entry": {
+        "bonus": 15
+      },
+      "phone_entry": {
+        "bonus": 25
+      },
       "answer_survey": {
         "bonus_per_answer": 5,
         "max_bonus": 25
@@ -384,7 +482,7 @@
     },
     "adkernel": {
       "_comment": "AdKernel account-level identifiers. Set at brand onboarding.",
-      "account_id": "",
+      "account_id": "270968",
       "_account_id_help": "⚡ REQUIRED — AdKernel account ID. Auto-fires universalPixel?account={{id}} on all funnel pages.",
       "device_lists": {
         "converted_blocklist_id": "",
@@ -393,30 +491,58 @@
       "eid_lists": {
         "leads_list_id": "",
         "_leads_list_id_help": "AdKernel Extended User List ID. Captured leads added for CRM-matched retargeting."
+      },
+      "conversion": {
+        "_comment": "AdKernel conversion-tracking. base_url + goal ids. Create a 2nd goal (PDF download) in AdKernel and paste its id below.",
+        "base_url": "https://xml.amplifai.it.com/conversion",
+        "lp_ctr_goal_id": "3291386",
+        "download_goal_id": "3291535"
       }
     }
   },
-
   "archetypes": {
     "_comment": "👥  ========== ARCHETYPES: Audience Persona Slots ==========",
     "_help": "Each slot maps to a ?at= URL param value (1-5). GTM reads {{DLV - at}} to route to the correct CJ pixel.",
-    "slot_1": { "name": "", "angle": "" },
-    "slot_2": { "name": "", "angle": "" },
-    "slot_3": { "name": "", "angle": "" },
-    "slot_4": { "name": "", "angle": "" },
-    "slot_5": { "name": "", "angle": "" }
+    "slot_1": {
+      "name": "",
+      "angle": ""
+    },
+    "slot_2": {
+      "name": "",
+      "angle": ""
+    },
+    "slot_3": {
+      "name": "",
+      "angle": ""
+    },
+    "slot_4": {
+      "name": "",
+      "angle": ""
+    },
+    "slot_5": {
+      "name": "",
+      "angle": ""
+    }
   },
-
   "angles": {
     "_comment": "🎯  ========== ANGLES: Message Angle Slots ==========",
     "_help": "Angle definitions referenced by archetypes. Maps to ?angle= URL param.",
-    "slot_1": { "name": "" },
-    "slot_2": { "name": "" },
-    "slot_3": { "name": "" },
-    "slot_4": { "name": "" },
-    "slot_5": { "name": "" }
+    "slot_1": {
+      "name": ""
+    },
+    "slot_2": {
+      "name": ""
+    },
+    "slot_3": {
+      "name": ""
+    },
+    "slot_4": {
+      "name": ""
+    },
+    "slot_5": {
+      "name": ""
+    }
   },
-
   "dsp_segments": {
     "_comment": "📡  ========== DSP SEGMENT CONFIGURATION ==========",
     "recency_days": {
@@ -441,7 +567,6 @@
       "lead_excludes_step0_campaign": true
     }
   },
-
   "retargeting_campaigns": {
     "_comment": "🔄  ========== RETARGETING CAMPAIGN REGISTRY ==========",
     "_instructions": "AI monitors segment counts via AdKernel API. When a segment crosses activation_threshold, AI creates the campaign, writes campaign_id back here, and sets status to active.",
@@ -450,49 +575,96 @@
     "customer_journey": {
       "step_0": {
         "_comment": "LP Viewers — widest audience, lowest CPM floor",
-        "campaign_id": "", "cpm_floor": 0.5, "status": "pending",
-        "creative_strategy": ["awareness", "brand_recall", "re-engagement"]
+        "campaign_id": "",
+        "cpm_floor": 0.5,
+        "status": "pending",
+        "creative_strategy": [
+          "awareness",
+          "brand_recall",
+          "re-engagement"
+        ]
       },
       "step_1": {
         "_comment": "CTA Clickers — showed intent, did not convert",
-        "campaign_id": "", "cpm_floor": 1.0, "status": "pending",
-        "creative_strategy": ["objection_handling", "social_proof", "urgency"]
+        "campaign_id": "",
+        "cpm_floor": 1.0,
+        "status": "pending",
+        "creative_strategy": [
+          "objection_handling",
+          "social_proof",
+          "urgency"
+        ]
       },
       "step_2": {
         "_comment": "Leads — form submitted, did not reach thank-you",
-        "campaign_id": "", "cpm_floor": 3.0, "status": "pending",
-        "creative_strategy": ["close", "offer_stack", "scarcity"]
+        "campaign_id": "",
+        "cpm_floor": 3.0,
+        "status": "pending",
+        "creative_strategy": [
+          "close",
+          "offer_stack",
+          "scarcity"
+        ]
       },
       "step_3_ltv": {
         "_comment": "Converters — LTV expansion campaigns",
-        "campaign_id": "", "cpm_floor": 5.0, "status": "pending",
-        "creative_strategy": ["upsell", "referral", "loyalty"]
+        "campaign_id": "",
+        "cpm_floor": 5.0,
+        "status": "pending",
+        "creative_strategy": [
+          "upsell",
+          "referral",
+          "loyalty"
+        ]
       }
     }
   },
-
   "dsp_pixels": {
     "_comment": "🔵  ========== DSP PIXEL URL REGISTRY ==========",
     "_instructions": "Pixel URLs for the 27 placeholder DSP tags. GTM reads these as brand-config values. Leave empty until AdKernel campaigns are created — GTM tags will fire but return 200 on empty.",
     "survey_quality": {
       "_comment": "3 survey quality segment pixels",
-      "high": "", "medium": "", "low": ""
+      "high": "",
+      "medium": "",
+      "low": ""
     },
     "aps_quality": {
       "_comment": "15 pixels: 3 funnel steps × 5 APS tiers",
-      "step_1_high": "", "step_1_med_high": "", "step_1_medium": "", "step_1_med_low": "", "step_1_low": "",
-      "step_2_high": "", "step_2_med_high": "", "step_2_medium": "", "step_2_med_low": "", "step_2_low": "",
-      "step_3_high": "", "step_3_med_high": "", "step_3_medium": "", "step_3_med_low": "", "step_3_low": ""
+      "step_1_high": "",
+      "step_1_med_high": "",
+      "step_1_medium": "",
+      "step_1_med_low": "",
+      "step_1_low": "",
+      "step_2_high": "",
+      "step_2_med_high": "",
+      "step_2_medium": "",
+      "step_2_med_low": "",
+      "step_2_low": "",
+      "step_3_high": "",
+      "step_3_med_high": "",
+      "step_3_medium": "",
+      "step_3_med_low": "",
+      "step_3_low": ""
     },
     "lp_micro": {
       "_comment": "10 LP micro-behavioral segment pixels",
-      "time_quick": "", "time_considered": "", "time_deliberate": "", "time_impulsive": "",
-      "cta_confident": "", "cta_med_hesitation": "", "cta_high_hesitation": "",
-      "engaged": "", "passive": "", "highly_engaged": ""
+      "time_quick": "",
+      "time_considered": "",
+      "time_deliberate": "",
+      "time_impulsive": "",
+      "cta_confident": "",
+      "cta_med_hesitation": "",
+      "cta_high_hesitation": "",
+      "engaged": "",
+      "passive": "",
+      "highly_engaged": ""
     },
     "master_quality": {
       "_comment": "4 master quality composite segment pixels",
-      "platinum": "", "gold": "", "silver": "", "bronze": ""
+      "platinum": "",
+      "gold": "",
+      "silver": "",
+      "bronze": ""
     }
   }
 }
