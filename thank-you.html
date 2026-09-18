@@ -284,24 +284,24 @@
       return 'low';
     }
 
-    // ── CONVERSION #2: fires on the DOWNLOAD CLICK (step_3) ──────
+    // ── CONVERSION #2: fires on the DOWNLOAD CLICK (step_2) ──────
     function fireDownloadConversion() {
       if (conversionFired) return;
       conversionFired = true;
 
       window.dataLayer.push(Object.assign({}, trackingData, {
         event:       'pdf_download',
-        funnel_step: 'step_3',
-        dsp_step:    'step_3',
+        funnel_step: 'step_2',
+        dsp_step:    'step_2',
         aps_current: apsScore,
         aps_tier:    getApsTierLabel(apsScore),
         eps_initial: epsScore
       }));
 
       window.dataLayer.push(Object.assign({}, trackingData, {
-        event:            'thankyou_conversion',
-        funnel_step:      'step_3',
-        dsp_step:         'step_3',
+        event:            'lead_conversion',
+        funnel_step:      'step_2',
+        dsp_step:         'step_2',
         conversion:       trackingData.conversion,
         campaign:         trackingData.campaign,
         banner:           trackingData.banner,
@@ -321,10 +321,10 @@
       if (dspEnabled) {
         window.dataLayer.push({
           event:            'dsp_postback',
-          funnel_step:      'step_3',
-          dsp_step:         'step_3',
+          funnel_step:      'step_2',
+          dsp_step:         'step_2',
           conversion:       trackingData.conversion,
-          conversion_value: deepGet(brandConfig, ['conversion_values', 'step_3'], 0),
+          conversion_value: deepGet(brandConfig, ['conversion_values', 'step_2'], 0),
           campaign:         trackingData.campaign,
           banner:           trackingData.banner,
           publisher:        trackingData.publisher,
@@ -338,8 +338,8 @@
       }
 
       window.dataLayer.push({
-        event:       'master_converted_retargeting',
-        funnel_step: 'step_3',
+        event:       'master_lead_retargeting',
+        funnel_step: 'step_2',
         conversion:  trackingData.conversion,
         archetype:   trackingData.archetype,
         angle:       trackingData.angle,
@@ -352,22 +352,7 @@
         publisher:   trackingData.publisher
       });
 
-      // ── ADKERNEL CONVERSION #2: PDF download ──
-      (function(){
-        var akConv   = deepGet(brandConfig, ['tracking','adkernel','conversion'], {});
-        var goalId   = deepGet(akConv, ['download_goal_id'], '');
-        var convBase = deepGet(akConv, ['base_url'], 'https://xml.amplifai.it.com/conversion');
-        var clickId  = trackingData.conversion;
-        if (goalId && clickId) {
-          var val = deepGet(brandConfig, ['conversion_values','step_3'], 0);
-          var px  = new Image();
-          px.src  = convBase + '?id=' + encodeURIComponent(goalId)
-                  + '&c=' + encodeURIComponent(clickId)
-                  + '&count=1&value=' + encodeURIComponent(val);
-          if (debugMode) console.log('[Download] AdKernel download conversion fired for click ' + clickId);
-        }
-      })();
-      if (debugMode) console.log('[Download] Conversion #2 (pdf_download / step_3) fired');
+      if (debugMode) console.log('[Download] Conversion #2 (pdf_download / step_2) fired');
     }
 
     function init() {
@@ -479,7 +464,7 @@
 
       // Light page-view signal (NOT the conversion)
       window.dataLayer.push(Object.assign({}, trackingData, {
-        event: 'download_page_view', funnel_step: 'step_3', dsp_step: 'step_3'
+        event: 'download_page_view', funnel_step: 'step_2', dsp_step: 'step_2'
       }));
 
       if (debugMode) {
@@ -493,7 +478,7 @@
           'PDF: ' + (pdfFile || '(none)'),
           'AdKernel acct: ' + (akAccountId || '(BLANK)'),
           'GTM: ' + (gtmId || '(BLANK)'),
-          'Conv value (step_3): ' + deepGet(config, ['conversion_values', 'step_3'], 0)
+          'Conv value (step_2): ' + deepGet(config, ['conversion_values', 'step_2'], 0)
         ].join('<br>');
       }
     }

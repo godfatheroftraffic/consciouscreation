@@ -413,6 +413,12 @@
       "cover": "book-cover.jpg",
       "pdf": "the-way-of-conscious-creation.pdf",
       "note": "No email required. It's yours."
+    },
+    "call_booked": {
+      "eyebrow": "Your call is booked",
+      "headline": "You're all set.",
+      "subheadline": "Your free 15-minute consultation is confirmed. Check your inbox for the calendar invite.",
+      "note": ""
     }
   },
   "tracking": {
@@ -491,12 +497,6 @@
       "eid_lists": {
         "leads_list_id": "",
         "_leads_list_id_help": "AdKernel Extended User List ID. Captured leads added for CRM-matched retargeting."
-      },
-      "conversion": {
-        "_comment": "AdKernel conversion-tracking. base_url + goal ids. Create a 2nd goal (PDF download) in AdKernel and paste its id below.",
-        "base_url": "https://xml.amplifai.it.com/conversion",
-        "lp_ctr_goal_id": "3291386",
-        "download_goal_id": "3291535"
       }
     }
   },

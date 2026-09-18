@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>You're booked</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link id="brand-font-link" rel="stylesheet" href="">
+  <style>
+    /* ECHO CALL-BOOKED PAGE v1.0 — fires Conversion #3 (call scheduled) on load */
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%;width:100%}
+    :root{--brand-font:'Inter',system-ui,sans-serif;--btn-color:#1F1647;--accent:#7c3aed;--overlay-opacity:.65}
+    body{font-family:var(--brand-font);background:#050510;color:#fff;min-height:100vh;display:flex;flex-direction:column}
+    #bg-gradient{position:fixed;inset:0;background:radial-gradient(ellipse at center top,#1a1246 0%,#050510 60%);z-index:-1}
+    #hero-bg{position:fixed;inset:0;background-size:cover;background-position:center;background-repeat:no-repeat;z-index:0}
+    #hero-overlay{position:fixed;inset:0;background:rgba(0,0,0,var(--overlay-opacity));z-index:1}
+    .bg-orb{position:fixed;border-radius:50%;filter:blur(80px);opacity:.20;z-index:0;animation:orbFloat 10s ease-in-out infinite}
+    .bg-orb-1{width:420px;height:420px;background:var(--btn-color);top:-120px;left:-100px}
+    .bg-orb-2{width:320px;height:320px;background:var(--accent);bottom:-80px;right:-80px;animation-delay:-5s}
+    @keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(18px,-18px) scale(1.04)}66%{transform:translate(-14px,14px) scale(.96)}}
+    #wrap{position:relative;z-index:2;display:flex;flex-direction:column;min-height:100vh}
+    #main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px 24px;text-align:center}
+    #card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:48px 44px;max-width:520px;width:100%;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 20px 60px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.08)}
+    #check{width:72px;height:72px;border-radius:50%;background:rgba(34,197,94,.14);display:flex;align-items:center;justify-content:center;margin:0 auto 26px;animation:pop .5s cubic-bezier(.16,1,.3,1) both}
+    #check svg{width:34px;height:34px;stroke:#22c55e;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+    @keyframes pop{0%{transform:scale(.6);opacity:0}100%{transform:scale(1);opacity:1}}
+    #eyebrow{display:inline-block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:18px;padding:6px 14px;border-radius:100px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03)}
+    #title{font-size:1.9rem;font-weight:700;margin-bottom:14px;letter-spacing:-.02em;line-height:1.2}
+    #subtitle{font-size:1.05rem;color:rgba(255,255,255,.68);line-height:1.6;max-width:420px;margin:0 auto}
+    #note{font-size:13px;color:rgba(255,255,255,.42);margin-top:20px;line-height:1.6}
+    #page-footer{position:relative;z-index:2;background:rgba(0,0,0,.4);border-top:1px solid rgba(255,255,255,.06);padding:20px;text-align:center}
+    #footer-links{display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+    #footer-links a{color:rgba(255,255,255,.35);text-decoration:none;font-size:11px}
+    #footer-links a:hover{color:rgba(255,255,255,.7)}
+    #footer-links .sep{color:rgba(255,255,255,.15);font-size:11px}
+    #footer-copyright{font-size:11px;color:rgba(255,255,255,.25)}
+    #debug-panel{display:none;position:fixed;top:10px;right:10px;background:rgba(0,0,0,.92);border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:16px;font-size:11px;color:#4ade80;font-family:monospace;z-index:9999;max-width:320px;line-height:1.6}
+    #debug-panel.active{display:block}
+    @media(max-width:600px){#card{padding:36px 24px;margin:0 8px}#title{font-size:1.5rem}}
+  </style>
+</head>
+<body>
+  <div id="bg-gradient"></div><div id="hero-bg"></div><div id="hero-overlay"></div>
+  <div class="bg-orb bg-orb-1"></div><div class="bg-orb bg-orb-2"></div>
+  <div id="wrap">
+    <main id="main">
+      <div id="card">
+        <div id="check"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></div>
+        <span id="eyebrow">Your call is booked</span>
+        <h1 id="title">You're all set.</h1>
+        <p id="subtitle">Your free 15-minute consultation is confirmed. Check your inbox for the calendar invite with everything you need.</p>
+        <p id="note"></p>
+      </div>
+    </main>
+    <footer id="page-footer">
+      <nav id="footer-links" aria-label="Footer links"></nav>
+      <p id="footer-copyright"></p>
+    </footer>
+  </div>
+  <div id="debug-panel"><div id="debug-content"></div></div>
+
+  <script>
+  (function(){
+    'use strict';
+    function getCookie(n){var e=n+'=';var c=document.cookie.split(';');for(var i=0;i<c.length;i++){var x=c[i].trim();if(x.indexOf(e)===0)return decodeURIComponent(x.substring(e.length));}return '';}
+    function setCookie(n,v,d){var e=new Date();e.setTime(e.getTime()+((d||365)*86400000));document.cookie=n+'='+encodeURIComponent(String(v))+'; expires='+e.toUTCString()+'; path=/; SameSite=Lax';}
+    var urlParams=(function(){var p={};window.location.search.substring(1).split('&').forEach(function(pr){var kv=pr.split('=');if(kv[0])p[decodeURIComponent(kv[0])]=kv[1]?decodeURIComponent(kv[1].replace(/\+/g,' ')):'';});return p;})();
+    function getParam(primary,aliases){if(urlParams[primary])return urlParams[primary];if(aliases){for(var i=0;i<aliases.length;i++)if(urlParams[aliases[i]])return urlParams[aliases[i]];}return getCookie(primary)||'';}
+    function deepGet(o,p,f){try{var v=p.reduce(function(a,k){return a[k];},o);return(v===undefined||v===null||v==='')?f:v;}catch(e){return f;}}
+
+    var clickId=getParam('conversion',['trck','click_id','cid']);
+    var debugMode=getParam('debug',[])==='1';
+    window.dataLayer=window.dataLayer||[];
+    var td={conversion:clickId,campaign:getParam('campaign',['campaign_id']),banner:getParam('banner',['creative_id','banner_id']),
+            publisher:getParam('publisher',['publisher_id']),archetype:getParam('archetype',['at']),angle:getParam('angle',['ag']),ad:getParam('ad',[])};
+
+    fetch('./brand-config.json?v='+Date.now()).then(function(r){return r.json();}).then(onCfg).catch(function(){onCfg({});});
+
+    function onCfg(config){
+      // GTM
+      var gtmId=deepGet(config,['brand','gtmId'],'');
+      if(gtmId&&gtmId!=='GTM-XXXXXXX'){(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer',gtmId);}
+      // AdKernel universal pixel
+      var akAccountId=deepGet(config,['tracking','adkernel','account_id'],'');
+      if(akAccountId){var p=document.createElement('img');p.src='https://rtb2-useast.amplifai.it.com/universalPixel?account='+encodeURIComponent(akAccountId);p.style.cssText='width:1px;height:1px;display:none';p.alt='';document.body.appendChild(p);}
+      // font / accent / bg
+      var fUrl=deepGet(config,['branding','font','url'],''),fFam=deepGet(config,['branding','font','family'],'Inter');
+      if(fUrl)document.getElementById('brand-font-link').href=fUrl;
+      document.documentElement.style.setProperty('--brand-font',"'"+fFam+"', system-ui, sans-serif");
+      var btn=deepGet(config,['landing_page','styling','button_color'],deepGet(config,['brand','accent_color'],'#1F1647'));
+      document.documentElement.style.setProperty('--btn-color',btn);
+      var bg=deepGet(config,['landing_page','defaults','background_image'],'');
+      if(bg)document.getElementById('hero-bg').style.backgroundImage="url('public/"+bg+"')";
+
+      // copy overrides (optional, from thank_you_page.call_booked)
+      var cb=deepGet(config,['thank_you_page','call_booked'],{});
+      if(deepGet(cb,['eyebrow'],''))document.getElementById('eyebrow').textContent=cb.eyebrow;
+      if(deepGet(cb,['headline'],''))document.getElementById('title').textContent=cb.headline;
+      if(deepGet(cb,['subheadline'],''))document.getElementById('subtitle').textContent=cb.subheadline;
+      if(deepGet(cb,['note'],''))document.getElementById('note').textContent=cb.note;
+
+      buildFooter(config);
+
+      // ── CONVERSION #3: BOOKED APPOINTMENT (fires on load = booking done) → GTM Step 3 ──
+      var val=deepGet(config,['conversion_values','step_3'],0);
+      var guardKey='cc_call_fired_'+(clickId||'anon');
+      var alreadyFired=getCookie(guardKey)==='1';
+
+      if(!alreadyFired){
+        window.dataLayer.push(Object.assign({},td,{event:'thankyou_conversion',funnel_step:'step_3',dsp_step:'step_3',conversion:clickId}));
+        window.dataLayer.push({event:'dsp_postback',funnel_step:'step_3',dsp_step:'step_3',conversion:clickId,conversion_value:val,campaign:td.campaign,banner:td.banner,publisher:td.publisher,archetype:td.archetype,angle:td.angle,ad:td.ad});
+        if(clickId)setCookie(guardKey,'1',365); // prevent double-count on refresh
+        if(debugMode)console.log('[Call-booked] GTM Step 3 (booked) dsp_postback fired for click '+clickId);
+      }
+
+      if(debugMode){
+        document.getElementById('debug-panel').classList.add('active');
+        document.getElementById('debug-content').innerHTML=[
+          'Call-booked page v1.0','──────────',
+          'Click id: '+(clickId||'(none — no attribution)'),
+          'Fires: dsp_postback step_3 (GTM Step 3 = Booked)',
+          'Value: '+val,
+          'Already fired: '+alreadyFired,
+          'AdKernel acct: '+(akAccountId||'(blank)')
+        ].join('<br>');
+      }
+    }
+
+    function buildFooter(config){
+      if(!deepGet(config,['footer','enabled'],true)){document.getElementById('page-footer').style.display='none';return;}
+      var fl=document.getElementById('footer-links');
+      var keys=['privacy','terms','cookies','contact'].filter(function(k){return deepGet(config,['footer','links',k,'enabled'],true);});
+      var defs={privacy:['Privacy Policy','/privacy'],terms:['Terms of Service','/terms'],cookies:['Cookie Policy','/cookies'],contact:['Contact','/contact']};
+      keys.forEach(function(k,idx){var a=document.createElement('a');a.href=deepGet(config,['footer','links',k,'url'],defs[k][1]);a.textContent=deepGet(config,['footer','links',k,'text'],defs[k][0]);fl.appendChild(a);if(idx<keys.length-1){var s=document.createElement('span');s.className='sep';s.textContent='·';fl.appendChild(s);}});
+      document.getElementById('footer-copyright').textContent=deepGet(config,['brand','copyright'],'© '+new Date().getFullYear()+' Conscious Creation. All rights reserved.');
+    }
+  })();
+  </script>
+</body>
+</html>

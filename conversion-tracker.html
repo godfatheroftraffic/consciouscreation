@@ -446,7 +446,7 @@
 
     var epsScore  = parseFloat(trackingData.eps_score) || 0;
     var apsScore  = parseFloat(trackingData.aps_score) || epsScore;
-    var dspStep   = 'step_2';
+    var dspStep   = 'bridge';  // bridge only — no conversion fires here (step_1 fired on LP, step_2 on download)
 
     // Set title immediately so GTM Preview captures correct page name
     var earlyBrand = getCookie('brand_name') || 'AmplifAI';
@@ -796,21 +796,6 @@
         document.body.appendChild(akPixel);
       }
 
-      // ── ADKERNEL CONVERSION #1: LP_CTR (fires on tracker load = LP click) ──
-      (function(){
-        var akConv   = deepGet(config, ['tracking','adkernel','conversion'], {});
-        var goalId   = deepGet(akConv, ['lp_ctr_goal_id'], '');
-        var convBase = deepGet(akConv, ['base_url'], 'https://xml.amplifai.it.com/conversion');
-        var clickId  = trackingData.conversion;
-        if (goalId && clickId) {
-          var val = deepGet(config, ['conversion_values','step_1'], 0);
-          var px  = new Image();
-          px.src  = convBase + '?id=' + encodeURIComponent(goalId)
-                  + '&c=' + encodeURIComponent(clickId)
-                  + '&count=1&value=' + encodeURIComponent(val);
-          if (debugMode) console.log('[Tracker] AdKernel LP_CTR conversion fired for click ' + clickId);
-        }
-      })();
 
       var fontUrl    = deepGet(config, ['branding', 'font', 'url'], '');
       var fontFamily = deepGet(config, ['branding', 'font', 'family'], 'Inter');
